@@ -25,6 +25,12 @@ export const metadata: Metadata = {
     "день рождения",
   ],
   authors: [{ name: "MYNBALA" }],
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "MYNBALA",
+  },
   openGraph: {
     title: "MYNBALA - Детский развлекательный парк",
     description: "Веселье каждый день!",
@@ -48,9 +54,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
+      <head>
+        <link rel="apple-touch-icon" href="/icons/icon-192.svg" />
+      </head>
       <body className={`min-h-screen safe-area-layout ${montserrat.variable}`}>
         <AuthProvider>
-          <div className="pb-16 lg:pb-0">{children}</div>
+          <div className="pb-20 lg:pb-0">{children}</div>
           <BottomNav />
         </AuthProvider>
       </body>

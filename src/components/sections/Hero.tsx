@@ -150,15 +150,23 @@ export function Hero() {
                 </a>
               </motion.div>
 
+              {/* Trust bar */}
               <motion.div 
-                className="flex flex-wrap gap-3 pt-4"
+                className="flex flex-wrap gap-4 pt-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
               >
-                <span className="chip">50+ аттракционов</span>
-                <span className="chip">4 города</span>
-                <span className="chip">10:00 - 22:00</span>
+                {[
+                  { value: "10 000+", label: "счастливых семей" },
+                  { value: "50+", label: "аттракционов" },
+                  { value: "4.9", label: "рейтинг" },
+                ].map((stat) => (
+                  <div key={stat.label} className="flex items-center gap-2">
+                    <span className="text-xl md:text-2xl font-black text-[var(--primary)]">{stat.value}</span>
+                    <span className="text-xs md:text-sm text-gray-500 leading-tight">{stat.label}</span>
+                  </div>
+                ))}
               </motion.div>
             </motion.div>
 

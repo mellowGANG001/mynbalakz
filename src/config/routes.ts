@@ -7,6 +7,8 @@ export const ROUTES = {
   promos: "/promos",
   support: "/support",
   profile: "/profile",
+  birthday: "/birthday",
+  attractions: "/attractions",
   authLogin: "/auth/login",
   authVerify: "/auth/verify",
   legalPrivacy: "/legal/privacy",
