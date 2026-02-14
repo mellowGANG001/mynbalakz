@@ -28,8 +28,8 @@
   --purple: #a855f7;
   --purple-light: #c084fc;
   --ink: #1a1a1a;
-  --surface: #f8f8f8;
-  --surface-soft: #f2f2f2;
+  --surface: #ffffff;
+  --surface-soft: #f5f5f5;
 
   /* Extended Radii */
   --radius-xl: 40px;
@@ -82,7 +82,7 @@
   
   body {
     @apply antialiased text-foreground;
-    background: var(--surface);
+    background: #ffffff;
     font-family: var(--font-montserrat), system-ui, -apple-system, sans-serif;
   }
 
@@ -106,6 +106,51 @@
     font-weight: 800;
   }
 
+  /* Joki Joya style -- huge outline headlines */
+  .text-outline-huge {
+    -webkit-text-stroke: 2.5px #1a1a1a;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    font-size: clamp(60px, 15vw, 200px);
+    line-height: 0.85;
+    letter-spacing: -0.03em;
+  }
+
+  /* Photo card -- image background with text overlay */
+  .photo-card {
+    @apply relative overflow-hidden;
+    border-radius: 24px;
+    min-height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .photo-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.45) 100%);
+    border-radius: 24px;
+    pointer-events: none;
+  }
+
+  .photo-card-light::after {
+    background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.85) 100%);
+  }
+
+  /* Arrow button (circle with arrow) like Joki Joya */
+  .arrow-btn {
+    @apply flex items-center justify-center w-12 h-12 rounded-full;
+    background: var(--ink);
+    color: white;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .arrow-btn:hover {
+    background: var(--primary);
+    transform: scale(1.1);
+  }
+
   .vertical-text {
     writing-mode: vertical-rl;
     text-orientation: mixed;
@@ -117,61 +162,36 @@
     font-weight: 900;
   }
 
-  /* Section Shell with pattern support */
+  /* Section Shell -- clean white like Joki Joya */
   .section-shell {
-    @apply relative py-16 md:py-24;
-    background: var(--surface);
-  }
-
-  .section-shell-alt {
-    @apply relative py-16 md:py-24;
+    @apply relative py-12 md:py-20;
     background: #ffffff;
   }
 
-  /* Juicy page backgrounds with gradient blobs */
+  .section-shell-alt {
+    @apply relative py-12 md:py-20;
+    background: var(--surface-soft);
+  }
+
+  /* Page background -- clean white */
   .page-bg-juicy {
     position: relative;
-    background: var(--surface);
+    background: #ffffff;
     overflow: hidden;
   }
 
-  .page-bg-juicy::before {
-    content: '';
-    position: absolute;
-    top: -20%;
-    right: -15%;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(125, 217, 87, 0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .page-bg-juicy::after {
-    content: '';
-    position: absolute;
-    bottom: -10%;
-    left: -10%;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 180, 216, 0.10) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  /* Premium Surface Cards v2 */
+  /* Surface Cards -- clean Joki Joya style */
   .surface-card {
-    background: linear-gradient(180deg, #ffffff 0%, #fafffe 100%);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.3s ease;
-    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.04);
   }
 
   .surface-card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: var(--shadow-lift), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-    border-color: rgba(94, 206, 46, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   }
 
   /* Colorful Feature Cards */
@@ -489,38 +509,11 @@
     backdrop-filter: blur(8px);
   }
 
-  /* Hero Panel -- Glassmorphism */
+  /* Hero Panel -- clean white like Joki Joya */
   .hero-panel {
-    border-radius: var(--radius-xl);
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(28px) saturate(1.8);
-    -webkit-backdrop-filter: blur(28px) saturate(1.8);
-    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-    border: 1.5px solid rgba(255, 255, 255, 0.7);
     position: relative;
     overflow: hidden;
-  }
-
-  .hero-panel::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -30%;
-    width: 80%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(94, 206, 46, 0.18) 0%, transparent 55%);
-    pointer-events: none;
-  }
-
-  .hero-panel::after {
-    content: '';
-    position: absolute;
-    bottom: -40%;
-    left: -20%;
-    width: 60%;
-    height: 80%;
-    background: radial-gradient(circle, rgba(255, 217, 61, 0.12) 0%, transparent 60%);
-    pointer-events: none;
+    background: #ffffff;
   }
 
   /* Section Typography */
@@ -536,7 +529,8 @@
   }
 
   .promo-banner {
-    background: linear-gradient(90deg, #d4f5c8 0%, #fff0a8 50%, #b8ecff 100%);
+    background: #f5f5f5;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
   }
 
   /* Decorative Elements */
