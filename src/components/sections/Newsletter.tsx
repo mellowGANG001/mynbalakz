@@ -178,12 +178,6 @@ export function Newsletter() {
                   <p className="text-sm text-gray-500">Это бесплатно и полезно</p>
                 </div>
               </div>
-              {isLocalTestingMode ? (
-                <p className="text-xs text-amber-700 rounded-xl bg-amber-100 px-3 py-2">
-                  Локальный режим: подписка сохраняется в localStorage.
-                </p>
-              ) : null}
-
               <div className="space-y-2">
                 <label className="text-sm font-bold text-[var(--ink)] flex items-center gap-1">
                   E-mail <span className="text-[#ff6b9d]">*</span>

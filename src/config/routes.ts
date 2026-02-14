@@ -9,6 +9,7 @@ export const ROUTES = {
   profile: "/profile",
   birthday: "/birthday",
   attractions: "/attractions",
+  cabinBooking: "/cabin-booking",
   authLogin: "/auth/login",
   authVerify: "/auth/verify",
   legalPrivacy: "/legal/privacy",

@@ -9,7 +9,7 @@ import { ROUTES } from "@/config/routes";
 
 export default function TicketSuccessPage() {
   return (
-    <main className="min-h-screen bg-[#F8F8F8]">
+    <main className="min-h-screen page-bg-juicy">
       <Header />
       <section className="section-shell">
         <div className="max-w-2xl mx-auto px-4">

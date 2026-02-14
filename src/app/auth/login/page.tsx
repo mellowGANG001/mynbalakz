@@ -71,12 +71,6 @@ function LoginPageContent() {
           <a href="/" className="inline-flex text-sm font-semibold text-[var(--accent)] hover:underline">
             Вернуться на главную
           </a>
-          {isLocalTestingMode ? (
-            <p className="text-sm text-amber-700 rounded-xl bg-amber-100 px-3 py-2">
-              Локальный режим: SMS не отправляется. На следующем шаге используйте любой 6-значный код.
-            </p>
-          ) : null}
-
           <form className="space-y-4" onSubmit={handleSubmit}>
             <label className="block text-sm font-bold text-[#1a1a1a]">
               Телефон

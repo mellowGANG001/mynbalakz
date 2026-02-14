@@ -87,7 +87,7 @@ export default function MyTicketsPage() {
                 ))}
               </div>
             ) : !isAuthenticated ? (
-              <Link href="/auth/login?next=/my-tickets" className="btn-green w-fit">
+              <Link href="/auth/login?next=/my-tickets" className="btn-green">
                 Войти для просмотра билетов
               </Link>
             ) : tickets.length > 0 ? (
@@ -130,14 +130,14 @@ export default function MyTicketsPage() {
                     <p className="text-xs text-gray-500">
                       Действует до: {new Date(ticket.valid_until).toLocaleString("ru-RU")}
                     </p>
-                    <div className="mt-4 flex flex-wrap gap-2">
+                    <div className="mt-4 grid grid-cols-2 gap-2">
                       <Link
                         href={`/tickets?qty=${encodeURIComponent(String(ticket.quantity))}`}
-                        className="btn-green px-4 py-2 text-sm"
+                        className="btn-green btn-sm"
                       >
                         Купить снова
                       </Link>
-                      <Link href="/restaurants" className="btn-dark px-4 py-2 text-sm">
+                      <Link href="/restaurants" className="btn-dark btn-sm">
                         Забронировать стол
                       </Link>
                     </div>
@@ -148,8 +148,8 @@ export default function MyTicketsPage() {
               <div className="rounded-2xl bg-black/5 p-5 text-sm text-gray-600">
                 Билеты пока не найдены. Перейдите в раздел покупки и оформите первый билет.
                 <div className="mt-4">
-                  <Link href="/tickets" className="btn-dark w-fit">
-                    Купить билет
+                  <Link href="/tickets" className="btn-green">
+                    Купить первый билет
                   </Link>
                 </div>
               </div>

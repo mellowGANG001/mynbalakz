@@ -100,7 +100,7 @@ export function Restaurants() {
               {/* CTA */}
               <motion.a 
                 href={ROUTES.restaurants}
-                className="btn-dark w-fit mt-6"
+                className="btn-dark mt-6"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
               >

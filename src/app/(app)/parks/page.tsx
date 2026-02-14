@@ -34,7 +34,7 @@ export default async function ParksPage() {
                 <p className="text-sm text-gray-600">{branch.address}</p>
                 <p className="text-sm text-gray-600">{branch.phone ?? "Телефон уточняется"}</p>
                 <p className="text-sm text-gray-600">{branch.working_hours ?? "График уточняется"}</p>
-                <div className="flex flex-wrap gap-3 pt-2">
+                <div className="grid gap-2 pt-2">
                   <a
                     href={get2GisRouteUrl({
                       name: branch.name,
@@ -49,23 +49,25 @@ export default async function ParksPage() {
                   >
                     Маршрут в 2GIS
                   </a>
-                  <a
-                    href={getGoogleRouteUrl({
-                      name: branch.name,
-                      city: branch.city,
-                      address: branch.address,
-                      latitude: branch.latitude,
-                      longitude: branch.longitude,
-                    })}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn-outline"
-                  >
-                    Открыть в Google Maps
-                  </a>
-                  <a href={`tel:${(branch.phone ?? "").replace(/\s+/g, "")}`} className="btn-dark">
-                    Позвонить
-                  </a>
+                  <div className="grid grid-cols-2 gap-2">
+                    <a
+                      href={getGoogleRouteUrl({
+                        name: branch.name,
+                        city: branch.city,
+                        address: branch.address,
+                        latitude: branch.latitude,
+                        longitude: branch.longitude,
+                      })}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn-outline btn-sm"
+                    >
+                      Google Maps
+                    </a>
+                    <a href={`tel:${(branch.phone ?? "").replace(/\s+/g, "")}`} className="btn-dark btn-sm">
+                      Позвонить
+                    </a>
+                  </div>
                 </div>
               </article>
             ))}

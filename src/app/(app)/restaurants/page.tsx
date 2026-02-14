@@ -33,7 +33,7 @@ export default function RestaurantsPage() {
         status: "new",
       });
       setLoading(false);
-      setMessage("Локальная заявка сохранена. Для теста backend не требуется.");
+      setMessage("Заявка принята! Мы свяжемся с вами для подтверждения.");
       setName("");
       setPhone("+7");
       setGuests(2);
@@ -78,7 +78,7 @@ export default function RestaurantsPage() {
             <p className="section-subtitle">
               Бронирование столика в пару кликов. Укажите контакты, и администратор подтвердит бронь.
             </p>
-            <a href="/support" className="btn-dark w-fit">
+            <a href="/support" className="btn-dark">
               Связаться с менеджером
             </a>
           </div>

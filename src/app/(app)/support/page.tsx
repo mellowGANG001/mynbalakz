@@ -52,7 +52,7 @@ export default function SupportPage() {
         status: "new",
       });
       setLoading(false);
-      setSuccess("Локальное обращение сохранено для теста.");
+      setSuccess("Обращение отправлено! Мы ответим в ближайшее время.");
       setMessage("");
       return;
     }

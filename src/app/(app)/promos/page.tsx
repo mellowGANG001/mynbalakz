@@ -15,7 +15,7 @@ export default async function PromosPage() {
     .order("valid_until");
 
   return (
-    <main className="min-h-screen bg-[#F8F8F8]">
+    <main className="min-h-screen page-bg-juicy">
       <Header />
       <AppTabs />
       <section className="section-shell">
@@ -28,8 +28,9 @@ export default async function PromosPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {(promos ?? []).map((promo: any) => (
-              <article key={promo.id} className="surface-card p-6 space-y-3">
-                <p className="chip w-fit">Скидка {promo.discount ?? 0}%</p>
+              <article key={promo.id} className="surface-card p-6 space-y-3 relative overflow-hidden">
+                <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#ffd93d]/15 blur-[50px] pointer-events-none" />
+                <p className="chip w-fit relative z-10">Скидка {promo.discount ?? 0}%</p>
                 <h2 className="text-2xl font-black text-[#1a1a1a]">{promo.title}</h2>
                 <p className="text-sm text-gray-600">{promo.description}</p>
                 <p className="rounded-xl bg-black/5 px-3 py-2 text-sm font-semibold text-[#1a1a1a]">
@@ -38,7 +39,7 @@ export default async function PromosPage() {
                 <p className="text-xs text-gray-500">
                   Действует до: {new Date(promo.valid_until).toLocaleDateString("ru-RU")}
                 </p>
-                <Link href={`/tickets?promo=${encodeURIComponent(getPromoCodeFromId(promo.id))}`} className="btn-green w-fit">
+                <Link href={`/tickets?promo=${encodeURIComponent(getPromoCodeFromId(promo.id))}`} className="btn-green">
                   Применить акцию
                 </Link>
               </article>

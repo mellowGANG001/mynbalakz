@@ -118,12 +118,6 @@ function VerifyPageContent() {
               Потерялись параметры входа. Вернитесь на страницу авторизации и отправьте код повторно.
             </p>
           ) : null}
-          {isLocalTestingMode ? (
-            <p className="text-sm text-amber-700 rounded-xl bg-amber-100 px-3 py-2">
-              Локальный режим: введите любой код из 4-6 цифр для входа.
-            </p>
-          ) : null}
-
           <form className="space-y-4" onSubmit={handleVerify}>
             <label className="block text-sm font-bold text-[#1a1a1a]">
               Код из SMS
