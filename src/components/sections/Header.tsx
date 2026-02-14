@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { MapPin, Phone, X, Menu, ArrowRight } from "lucide-react";
+import { MapPin, Phone, X, Menu } from "lucide-react";
 import { ROUTES } from "@/config/routes";
 import { useAuth } from "@/providers/auth-provider";
 
@@ -61,22 +61,6 @@ export function Header() {
 
   return (
     <>
-      {/* ── Promo Bar ── */}
-      <div className="promo-banner py-2.5 px-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <span className="text-xs sm:text-sm font-bold text-[var(--ink)] tracking-wide">
-            ДЕТСКИЙ ДЕНЬ РОЖДЕНИЯ СО СКИДКОЙ
-          </span>
-          <Link
-            href={ROUTES.birthday}
-            className="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--ink)] text-white flex items-center justify-center hover:bg-[#333] transition-colors"
-            aria-label="Подробнее о дне рождения"
-          >
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-      </div>
-
       {/* ── Main Header ── */}
       <header className="sticky top-0 z-50 bg-white border-b border-black/5">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">

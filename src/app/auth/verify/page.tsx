@@ -18,7 +18,6 @@ function VerifyPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const supabase = createClient();
-  const supabaseAny = supabase as any;
 
   const queryPhone = searchParams.get("phone") ?? "";
   const queryNext = searchParams.get("next") ?? "/profile";
@@ -79,7 +78,7 @@ function VerifyPageContent() {
     const userId = data.user.id;
 
     await Promise.all([
-      supabaseAny.from("users").upsert(
+      supabase.from("users").upsert(
         {
           id: userId,
           phone,
@@ -88,7 +87,7 @@ function VerifyPageContent() {
         },
         { onConflict: "id" }
       ),
-      supabaseAny.from("login_history").insert({
+      supabase.from("login_history").insert({
         user_id: userId,
         success: true,
         login_method: "phone_otp",

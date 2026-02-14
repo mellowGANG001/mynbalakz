@@ -38,7 +38,7 @@ const emptySettings: LocalProfileSettings = {
 };
 
 export function useProfileData(): ProfileDataState {
-  const supabase = useMemo(() => createClient() as any, []);
+  const supabase = useMemo(() => createClient(), []);
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [phone, setPhone] = useState("");

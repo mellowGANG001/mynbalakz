@@ -200,7 +200,7 @@ export function Footer() {
       </div>
 
       {/* Floating Social Buttons */}
-      <div className="fixed safe-bottom-offset right-6 flex flex-col gap-3 z-50">
+      <div className="fixed right-4 flex flex-col gap-3 z-40 bottom-24 lg:bottom-8">
         <motion.a
           href="https://wa.me/77262505050"
           target="_blank"

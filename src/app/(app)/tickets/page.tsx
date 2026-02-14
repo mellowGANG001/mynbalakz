@@ -27,7 +27,7 @@ export default function TicketsPage() {
 function TicketsPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const supabase = useMemo(() => createClient() as any, []);
+  const supabase = useMemo(() => createClient(), []);
 
   const [branches, setBranches] = useState<Branch[]>([]);
   const [tariffs, setTariffs] = useState<Tariff[]>([]);

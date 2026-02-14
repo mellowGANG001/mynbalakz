@@ -8,7 +8,7 @@ import { createClient } from "@/lib/supabase/client";
 import { addLocalNewsletter, isLocalTestingMode } from "@/lib/local-mode";
 
 export function Newsletter() {
-  const supabase = useMemo(() => createClient() as any, []);
+  const supabase = useMemo(() => createClient(), []);
   const prefersReducedMotion = useReducedMotion();
   const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);

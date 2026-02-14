@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowRight, MapPin } from "lucide-react";
 import { ROUTES } from "@/config/routes";
 import { ThreeDStage } from "@/components/three-d/ThreeDStage";
 
@@ -124,6 +125,23 @@ export function Hero() {
               </div>
             </div>
           </ThreeDStage>
+        </motion.div>
+
+        {/* ── CTA Buttons ── */}
+        <motion.div
+          className="mt-8 flex flex-col sm:flex-row gap-3 w-full max-w-md"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
+        >
+          <Link href={ROUTES.tickets} className="btn-green">
+            <ArrowRight className="w-5 h-5" />
+            КУПИТЬ БИЛЕТЫ
+          </Link>
+          <Link href={ROUTES.parks} className="btn-dark">
+            <MapPin className="w-5 h-5" />
+            ВЫБРАТЬ ПАРК
+          </Link>
         </motion.div>
 
         {/* ── Stats Bar ── */}

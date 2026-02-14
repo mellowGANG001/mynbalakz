@@ -75,7 +75,7 @@ export function BottomNav() {
               }}
             >
               <Plus className="w-7 h-7 text-white" strokeWidth={2.5} />
-              <span className="absolute -bottom-5 text-[9px] font-black text-[var(--primary-dark)]">Купить</span>
+              <span className="absolute -bottom-5 text-[11px] font-black text-[var(--primary-dark)]">Купить</span>
             </Link>
           </motion.div>
         </div>

@@ -8,7 +8,7 @@ import { AppTabs } from "@/components/navigation/AppTabs";
 import { addLocalBooking, isLocalTestingMode } from "@/lib/local-mode";
 
 export default function RestaurantsPage() {
-  const supabase = useMemo(() => createClient() as any, []);
+  const supabase = useMemo(() => createClient(), []);
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("+7");

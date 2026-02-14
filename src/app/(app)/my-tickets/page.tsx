@@ -27,7 +27,7 @@ function getQrImageUrl(payload: string) {
 }
 
 export default function MyTicketsPage() {
-  const supabase = useMemo(() => createClient() as any, []);
+  const supabase = useMemo(() => createClient(), []);
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [tickets, setTickets] = useState<Ticket[]>([]);
@@ -122,7 +122,7 @@ export default function MyTicketsPage() {
                       <img
                         src={getQrImageUrl(ticket.qr_code)}
                         alt={`QR код билета ${ticket.tariff_name}`}
-                        className="mx-auto h-44 w-44 rounded-xl border border-black/10 bg-white p-2"
+                        className="mx-auto h-56 w-56 rounded-xl border border-black/10 bg-white p-2"
                         loading="lazy"
                       />
                       <p className="mt-2 text-center text-xs text-gray-500">Код: {ticket.qr_code}</p>

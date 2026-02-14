@@ -11,7 +11,7 @@ import { branches as localBranches } from "@/lib/home-data";
 type Branch = { id: string; city: string; name: string };
 
 export default function SupportPage() {
-  const supabase = useMemo(() => createClient() as any, []);
+  const supabase = useMemo(() => createClient(), []);
   const [branches, setBranches] = useState<Branch[]>([]);
   const [branchId, setBranchId] = useState("");
   const [topic, setTopic] = useState("general");
