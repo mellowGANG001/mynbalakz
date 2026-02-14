@@ -1,18 +1,21 @@
+"use client";
+
 import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
-import { createClient } from "@/lib/supabase/server";
 import { AppTabs } from "@/components/navigation/AppTabs";
 import { get2GisRouteUrl, getGoogleRouteUrl } from "@/lib/maps";
+import { branches as localBranches } from "@/lib/home-data";
 
-export default async function ParksPage() {
-  const supabase = await createClient();
-  const supabaseAny = supabase as any;
-  const { data: branches } = await supabaseAny
-    .from("branches")
-    .select("id,name,city,address,phone,working_hours,latitude,longitude")
-    .eq("is_active", true)
-    .order("city");
+const branches = localBranches.map((b) => ({
+  id: b.id,
+  name: b.name,
+  city: b.city,
+  address: b.address,
+  phone: b.phone,
+  working_hours: b.hours,
+}));
 
+export default function ParksPage() {
   return (
     <main className="min-h-screen page-bg-juicy">
       <Header />
@@ -26,23 +29,17 @@ export default async function ParksPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {(branches ?? []).map((branch: any) => (
+            {branches.map((branch) => (
               <article key={branch.id} className="surface-card p-6 space-y-3 relative overflow-hidden">
                 <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-[#7dd957]/10 blur-[40px] pointer-events-none" />
                 <p className="chip w-fit relative z-10">{branch.city}</p>
                 <h2 className="text-2xl font-black text-[#1a1a1a]">{branch.name}</h2>
                 <p className="text-sm text-gray-600">{branch.address}</p>
-                <p className="text-sm text-gray-600">{branch.phone ?? "Телефон уточняется"}</p>
-                <p className="text-sm text-gray-600">{branch.working_hours ?? "График уточняется"}</p>
+                <p className="text-sm text-gray-600">{branch.phone}</p>
+                <p className="text-sm text-gray-600">{branch.working_hours}</p>
                 <div className="grid gap-2 pt-2">
                   <a
-                    href={get2GisRouteUrl({
-                      name: branch.name,
-                      city: branch.city,
-                      address: branch.address,
-                      latitude: branch.latitude,
-                      longitude: branch.longitude,
-                    })}
+                    href={get2GisRouteUrl({ name: branch.name, city: branch.city, address: branch.address })}
                     target="_blank"
                     rel="noreferrer"
                     className="btn-green"
@@ -51,20 +48,14 @@ export default async function ParksPage() {
                   </a>
                   <div className="grid grid-cols-2 gap-2">
                     <a
-                      href={getGoogleRouteUrl({
-                        name: branch.name,
-                        city: branch.city,
-                        address: branch.address,
-                        latitude: branch.latitude,
-                        longitude: branch.longitude,
-                      })}
+                      href={getGoogleRouteUrl({ name: branch.name, city: branch.city, address: branch.address })}
                       target="_blank"
                       rel="noreferrer"
                       className="btn-outline btn-sm"
                     >
                       Google Maps
                     </a>
-                    <a href={`tel:${(branch.phone ?? "").replace(/\s+/g, "")}`} className="btn-dark btn-sm">
+                    <a href={`tel:${branch.phone.replace(/\s+/g, "")}`} className="btn-dark btn-sm">
                       Позвонить
                     </a>
                   </div>

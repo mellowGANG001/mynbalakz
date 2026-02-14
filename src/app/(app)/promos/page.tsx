@@ -1,19 +1,21 @@
+"use client";
+
 import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
-import { createClient } from "@/lib/supabase/server";
 import { AppTabs } from "@/components/navigation/AppTabs";
 import Link from "next/link";
 import { getPromoCodeFromId } from "@/lib/promo";
+import { promos as localPromos } from "@/lib/home-data";
 
-export default async function PromosPage() {
-  const supabase = await createClient();
-  const supabaseAny = supabase as any;
-  const { data: promos } = await supabaseAny
-    .from("promos")
-    .select("id,title,description,discount,valid_until")
-    .eq("is_active", true)
-    .order("valid_until");
+const promos = localPromos.map((p, i) => ({
+  id: p.id,
+  title: p.title,
+  description: p.description,
+  discount: p.id === "family" ? 20 : p.id === "restaurant" ? 15 : 10,
+  valid_until: new Date(Date.now() + (i + 30) * 24 * 60 * 60 * 1000).toISOString(),
+}));
 
+export default function PromosPage() {
   return (
     <main className="min-h-screen page-bg-juicy">
       <Header />
@@ -27,10 +29,10 @@ export default async function PromosPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {(promos ?? []).map((promo: any) => (
+            {promos.map((promo) => (
               <article key={promo.id} className="surface-card p-6 space-y-3 relative overflow-hidden">
                 <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#ffd93d]/15 blur-[50px] pointer-events-none" />
-                <p className="chip w-fit relative z-10">Скидка {promo.discount ?? 0}%</p>
+                <p className="chip w-fit relative z-10">Скидка {promo.discount}%</p>
                 <h2 className="text-2xl font-black text-[#1a1a1a]">{promo.title}</h2>
                 <p className="text-sm text-gray-600">{promo.description}</p>
                 <p className="rounded-xl bg-black/5 px-3 py-2 text-sm font-semibold text-[#1a1a1a]">
